@@ -6,7 +6,6 @@ import 'leaflet/dist/leaflet.css';
 import geojson from 'json!./user.geojson';
 // import local components Filter and ForkMe
 import Filter from './Filter';
-import ForkMe from './ForkMe';
 
 // store the map configuration properties in an object,
 // we could also move this to a separate file & import it if desired.
@@ -229,7 +228,6 @@ class Map extends Component {
               filterUsers={this.updateMap} />
           }
         <div ref={(node) => { /*console.log("hello"+node+this.count);this.count=this.count+1;*/this._mapNode = node}} id="map" />
-        <ForkMe />
       </div>
     );
   }
