@@ -5,7 +5,10 @@ import 'leaflet/dist/leaflet.css';
 // using webpack json loader we can import our geojson file like this
 import geojson from 'json!./user.geojson';
 // import local components Filter and ForkMe
-import Filter from './Filter';
+
+import Filter2 from './Filter2';
+import axios from 'axios';
+import md5 from 'MD5';
 
 // store the map configuration properties in an object,
 // we could also move this to a separate file & import it if desired.
@@ -31,6 +34,8 @@ config.tileLayer = {
     accessToken: ''
   }
 };
+const USER_TYPE = "https://deductions.github.io/drivers.owl.ttl#Driver";
+const SERVICE_PORT = "http://localhost:9000/position";
 
 // array to store unique names of Brooklyn subway lines,
 // this eventually gets passed down to the Filter component
@@ -47,34 +52,63 @@ class Map extends Component {
       driversFilter: '*',
       numUser: null
     };
+    this.geoCollection = {};
+    this.prevGeoCollection = null;
     this._mapNode = null;
     this.updateMap = this.updateMap.bind(this);
     this.onEachFeature = this.onEachFeature.bind(this);
     this.pointToLayer = this.pointToLayer.bind(this);
     this.filterFeatures = this.filterFeatures.bind(this);
     this.filterGeoJSONLayer = this.filterGeoJSONLayer.bind(this);
-    this.count = 0;
+    this.plot = this.plot.bind(this);
+    this.postData = this.postData.bind(this);
+    this.entityShortName = this.entityShortName.bind(this);
+    this.transformToGeoJSON = this.transformToGeoJSON.bind(this);
   }
 
   componentDidMount() {
     // code to run just after the component "mounts" / DOM elements are created
     // we could make an AJAX request for the GeoJSON data here if it wasn't stored locally
-    this.getData();
+    console.log("get data");
+    //this.getData();
+    this.postData();
     // create the Leaflet map object
     //console.log(this._mapNode);
-    if (!this.state.map) this.init(this._mapNode);
+    if (!this.state.map&&this.state.geojson) this.init(this._mapNode);
   }
 
   componentDidUpdate(prevProps, prevState) {
     // code to run when the component receives new props or state
     // check to see if geojson is stored, map is created, and geojson overlay needs to be added
+    console.log("hello");
+    if (!this.state.map&&this.state.geojson) {
+      this.init(this._mapNode);
+      this.postDataID = setInterval(
+        () => {
+          console.log("testInterval");
+          console.log(Math.round(new Date().getTime()));
+          this.postData();
+        },
+        10000
+      );
+    };
     if (this.state.geojson && this.state.map && !this.state.geojsonLayer) {
       // add the geojson overlay
+      console.log("hello1");
       this.addGeoJSONLayer(this.state.geojson);
     }
-    // check to see if the subway lines filter has changed
+    // check to see if the filter has changed or data changes
     if (this.state.driversFilter !== prevState.driversFilter) {
       // filter / re-render the geojson overlay
+      console.log("hello2");
+      console.log(this.geoCollection);
+      this.filterGeoJSONLayer();
+    }
+    if (prevState.geojson&&md5(JSON.stringify(this.state.geojson))!==md5(JSON.stringify(prevState.geojson))) {
+      // filter / re-render the geojson overlay
+      console.log("hello3");
+      console.log(this.geoCollection);
+      UserNames=[];
       this.filterGeoJSONLayer();
     }
   }
@@ -83,6 +117,7 @@ class Map extends Component {
     // code to run just before unmounting the component
     // this destroys the Leaflet map object & related event listeners
     this.state.map.remove();
+     clearInterval(this.postDataID);
   }
 
   getData() {
@@ -93,16 +128,145 @@ class Map extends Component {
       geojson
     });
   }
+  entityShortName(iri){
+      if (typeof iri === 'undefined') {
+          return true;
+      } else {
+          return iri.split('#')[1];
+      }
+  }
+
+  plot(cur,JSONData){
+      console.log(JSONData);
+      if (typeof JSONData['@graph'] === 'undefined') {
+        console.log(cur.entityShortName(JSONData['@type']));
+          if (cur.entityShortName(JSONData['@type']) === 'Driver') {
+          // if (typeof JSONData.name !== 'undefined') {
+              console.log('chauffeur isolé');
+              cur.transformToGeoJSON([JSONData],cur);
+              //Pins.unMark();
+              //Pins.mark(JSONData);
+          } else {
+              console.log('Impossible d’interpréter le format de données');
+          }
+      } else {
+          // var points = JSONData['@graph'].filter(function (objet) {return (typeof objet.name !== 'undefined')});
+          var points = JSONData['@graph'].filter(function (objet) {return ( cur.entityShortName(objet['@type']) === 'Driver'); });
+          if (points.length > 0) {
+              // TODO : la fonction plot n'affiche plus seulement les chauffeurs mais tous les
+              // points envoyés par le serveur quelle que soit leur nature
+              console.log(points.length.toString()+' chauffeur(s) en activité');
+              //Pins.repaint(points);
+              console.log(points);
+              cur.transformToGeoJSON(points);
+          } else {
+              console.log('Aucun chauffeur à afficher sur la carte');
+          }
+      }
+      //$('#presents').html(Pins.markers.length + " chauffeur(s) en service");
+  }
+
+  transformToGeoJSON(data){
+    console.log("transform data",data);
+    console.log("current geoCollection data",this.geoCollection);
+    //console.log("defalut geo",defaultGeoCollection);
+    data.map(
+      (value, index)=>
+      {
+
+        var geoFeatures ={
+          "type": "Feature",
+          "geometry" : {
+            "type": "Point",
+            "coordinates": [value["long"], value["lat"]],
+          },
+          "properties" : {
+            "NAME": value["name"],
+            "URL" : value["url"]
+          }
+        }
+        console.log("value:",value);
+        console.log("mapping data index:",index,"-- geoFeatures data:",geoFeatures);
+        this.geoCollection.features.push(geoFeatures);
+        console.log("mapping data geoCollection:",this.geoCollection);
+      });
+    console.log("after transform geoCollection is:",this.geoCollection);
+    //console.log("defalut geo",defaultGeoCollection);
+        /*{ "type": "Feature",
+          "properties": {
+            "NAME": "user2",
+            "URL": "http:\/\/www.xxx.xxx\/xxx\/xxx\/"},
+          "geometry": {
+            "type": "Point",
+            "coordinates": [ 2.354345,48.816703 ] }
+        }*/
+  }
+  postData(){
+
+    var current = {
+        "@context": "https://deductions.github.io/drivers.context.jsonld",
+        "@type": USER_TYPE,
+        "lat": 48.826703 ,
+        "long": 2.344345,
+        "timestamp": Math.round(new Date().getTime()),
+        "@id" : "lalala",
+        "error": 0
+      };
+    var currentPosition = JSON.stringify(current);
+    this.prevGeoCollection = this.geoCollection;
+    this.geoCollection = {
+      "type": "FeatureCollection",
+      "features": []
+    };
+    //console.log("defalut geo",defaultGeoCollection);
+    /*console.log("setDefault to geoCollection:",this.geoCollection);
+    console.log("setDefault to geoCollection:",this.prevGeoCollection.features);
+    console.log("geoCollection:",md5(JSON.stringify(this.geoCollection)));
+    console.log("prevGeoCollection:",md5(JSON.stringify(this.prevGeoCollection)));*/
+    console.log("currentPosition done start post");
+    console.log("--current geoCollection",this.geoCollection);
+    var cur = this;
+    axios({
+      method: 'post',
+      url: SERVICE_PORT,
+      data: currentPosition,
+      headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+      }
+    }).then(function(res) {
+      // Traitement des positions des chaffeurs
+      console.log(res);
+      console.log("this:",cur);
+      cur.plot(cur,res.data);
+      console.log("plot done");
+      if(md5(JSON.stringify(cur.geoCollection))!==md5(JSON.stringify(cur.prevGeoCollection))){
+        console.log("data diffs, reset state");
+        cur.setState({
+          numUser: cur.geoCollection.features.length,
+          geojson: cur.geoCollection
+        });
+        console.log("get data done set state geojson");
+      }
+
+
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
+
+  }
 
   updateMap(e) {
-    let subwayLine = e.target.value;
+    let userSelected = e.target.value;
     // change the subway line filter
-    if (subwayLine === "All Drivers") {
-      subwayLine = "*";
+    if (userSelected === "All Drivers") {
+      userSelected = "*";
     }
     // update our state with the new filter value
     this.setState({
-      driversFilter: subwayLine
+      driversFilter: userSelected
     });
   }
 
@@ -124,10 +288,13 @@ class Map extends Component {
 
   filterGeoJSONLayer() {
     // clear the geojson layer of its data
+
+    console.log("geojsonLayer:",this.state.geojsonLayer);
     this.state.geojsonLayer.clearLayers();
+
     // re-add the geojson so that it filters out subway lines which do not match state.filter
-    console.log("remove and add data");
-    this.state.geojsonLayer.addData(geojson);
+    //console.log("remove and add data");
+    this.state.geojsonLayer.addData(this.state.geojson);
     // fit the map to the new geojson layer's geographic extent
     this.zoomToFeature(this.state.geojsonLayer);
   }
@@ -176,7 +343,7 @@ class Map extends Component {
       // if the array for unique subway line names has not been made, create it
       // there are 19 unique names total
 
-
+      console.log("enter onEachFeature");
         // add subway line name if it doesn't yet exist in the array
       if (UserNames.indexOf(feature.properties.NAME) === -1){
         UserNames.push(feature.properties.NAME);
@@ -202,6 +369,7 @@ class Map extends Component {
 }
 
   init(id) {
+    console.log("hello init");
     if (this.state.map) return;
     // this function creates the Leaflet map object and is called after the Map component mounts
     let map = L.map(id, config.params);
@@ -216,18 +384,25 @@ class Map extends Component {
   }
 
   render() {
-    const { driversFilter } = this.state;
-
+    console.log("hey");
+    console.log(this.state.geojson);
+    var cur = this;
+    console.log(this);
     return (
+
       <div id="mapUI">
+
         {
           /* render the Filter component only after the subwayLines array has been created */
-          UserNames.length &&
-            <Filter lines={UserNames}
-              curFilter={driversFilter}
-              filterUsers={this.updateMap} />
+
+          //TODO UserNames change after render filter again, so maybe send messages directly to the filter...
+
+          cur.state.geojson &&
+            <Filter2
+              curState={cur.state.geojson}
+              filterUsers={cur.updateMap} />
           }
-        <div ref={(node) => { /*console.log("hello"+node+this.count);this.count=this.count+1;*/this._mapNode = node}} id="map" />
+        <div ref={(node) => { /*console.log("hello"+node+this.count);this.count=this.count+1;*/cur._mapNode = node}} id="map" />
       </div>
     );
   }

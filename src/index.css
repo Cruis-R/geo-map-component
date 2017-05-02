@@ -13,7 +13,7 @@ html, body {
   position: absolute;
   top: 10px;
   z-index: 10;
-  width: 200px;
+  width: auto;
   height: auto;
   background: hsla(0,100%,100%,0.8);
   margin: 10px;
@@ -36,5 +36,6 @@ html, body {
 }
 .filterUserLines select {
   display: block;
-  margin: 0 auto;
+  margin: 5px;
+
 }
