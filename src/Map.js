@@ -26,7 +26,7 @@ config.params = {
 };
 //48.836703, 2.334345
 config.tileLayer = {
-  uri: 'http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png',
+  uri: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
   params: {
     minZoom: 11,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
@@ -326,12 +326,12 @@ class Map extends Component {
     // renders our GeoJSON points as circle markers, rather than Leaflet's default image markers
     // parameters to style the GeoJSON markers
     var markerParams = {
-      radius: 4,
-      fillColor: 'orange',
+      radius: 7,
+      fillColor: 'red',
       color: '#fff',
       weight: 1,
-      opacity: 0.5,
-      fillOpacity: 0.8
+      opacity: 1,
+      fillOpacity: 1
     };
 
     return L.circleMarker(latlng, markerParams);
