@@ -2,7 +2,7 @@
 
 Find the live demo [here](https://cruis-r.github.io/geo-map-component/)
 
-# Get start
+# Get started
 To start the server first in order to use the map conponent!!
 The server is on 
 
