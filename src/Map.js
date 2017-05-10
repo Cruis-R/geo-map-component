@@ -3,9 +3,11 @@ import L from 'leaflet';
 // postCSS import of Leaflet's CSS
 import 'leaflet/dist/leaflet.css';
 // using webpack json loader we can import our geojson file like this
-import geojson from 'json!./user.geojson';
 // import local components Filter and ForkMe
-
+import { connect } from 'react-redux'
+import actions from '../action/action';
+//import * as actions from '../action/action'
+import { bindActionCreators } from 'redux';
 import Filter2 from './Filter2';
 import axios from 'axios';
 import md5 from 'MD5';
@@ -52,6 +54,9 @@ class Map extends Component {
       driversFilter: '*',
       numUser: null
     };
+    console.log("url search",this.props);
+    this.isServer = this.props.isServer?this.props.isServer:"false";
+    this.urlQuery = this.props.urlQuery?this.props.urlQuery:null;
     this.geoCollection = {};
     this.prevGeoCollection = null;
     this._mapNode = null;
@@ -64,37 +69,49 @@ class Map extends Component {
     this.postData = this.postData.bind(this);
     this.entityShortName = this.entityShortName.bind(this);
     this.transformToGeoJSON = this.transformToGeoJSON.bind(this);
+    this.getDataFromUrl = this.getDataFromUrl.bind(this);
   }
 
   componentDidMount() {
     // code to run just after the component "mounts" / DOM elements are created
     // we could make an AJAX request for the GeoJSON data here if it wasn't stored locally
     console.log("get data");
-    //this.getData();
-    this.postData();
+    if(this.isServer !=="false"){
+      this.postData();
+    }else{
+      this.getData();
+    }
+    //this.postData();
     // create the Leaflet map object
     //console.log(this._mapNode);
-    if (!this.state.map&&this.state.geojson) this.init(this._mapNode);
+    //if (!this.state.map&&this.state.geojson) this.init(this._mapNode);
   }
 
   componentDidUpdate(prevProps, prevState) {
     // code to run when the component receives new props or state
     // check to see if geojson is stored, map is created, and geojson overlay needs to be added
-    console.log("hello");
+    //console.log("hello");
+    if(this.urlQuery&&this.props.urlData&&!this.state.geojson){
+      this.setState({
+        geojson:this.props.urlData
+      });
+    }
     if (!this.state.map&&this.state.geojson) {
       this.init(this._mapNode);
       this.postDataID = setInterval(
         () => {
           console.log("testInterval");
           console.log(Math.round(new Date().getTime()));
-          this.postData();
+          if(this.isServer!=="false"){
+            this.postData();
+          }
         },
         10000
       );
     };
     if (this.state.geojson && this.state.map && !this.state.geojsonLayer) {
       // add the geojson overlay
-      console.log("hello1");
+      //console.log("hello1");
       this.addGeoJSONLayer(this.state.geojson);
     }
     // check to see if the filter has changed or data changes
@@ -123,11 +140,36 @@ class Map extends Component {
   getData() {
     // could also be an AJAX request that results in setting state with the geojson data
     // for simplicity sake we are just importing the geojson data using webpack's json loader
-    this.setState({
-      numUser: geojson.features.length,
-      geojson
+    console.log("hello redux defaultGeoData",this.props.defaultGeoData);
+    if(this.urlQuery){
+      this.getDataFromUrl(this.urlQuery);
+    }
+    else{
+      this.setState({
+        numUser: this.props.defaultGeoData.features.length,
+        geojson: this.props.defaultGeoData
+      });
+    }
+  }
+  getDataFromUrl(url){
+    var cur = this;
+    var decodeURI = decodeURIComponent(url);
+    decodeURI = decodeURI.slice(5);
+    console.log(decodeURI);
+    axios({
+      method: 'get',
+      url: url.slice(5),
+      headers: {
+          'Accept': 'application/ld+json, application/json',
+          'Content-Type': 'application/ld+json, application/json'
+      }
+    }).then(function(res) {
+      console.log(res);
+      cur.props.actions.getDataFromUrl(res.data);
     });
   }
+
+
   entityShortName(iri){
       if (typeof iri === 'undefined') {
           return true;
@@ -386,6 +428,7 @@ class Map extends Component {
   render() {
     console.log("hey");
     console.log(this.state.geojson);
+    console.log("map url search",this.props);
     var cur = this;
     console.log(this);
     return (
@@ -408,4 +451,15 @@ class Map extends Component {
   }
 }
 
-export default Map;
+const mapStateToProps = state => ({
+  urlData:state.urlData,
+  defaultGeoData:state.defaultGeoData
+})
+
+const mapDispatchToProps = dispatch => ({
+    actions: bindActionCreators(actions, dispatch)
+})
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Map)
