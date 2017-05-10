@@ -18,9 +18,9 @@ let config = {};
 config.params = {
   center: [2.334345,48.836703],
   zoomControl: false,
-  zoom: 13,
-  maxZoom: 19,
-  minZoom: 11,
+  zoom: 1,
+  maxZoom: 30,
+  minZoom: 1,
   scrollwheel: false,
   legends: true,
   infoControl: false,
@@ -30,7 +30,7 @@ config.params = {
 config.tileLayer = {
   uri: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
   params: {
-    minZoom: 11,
+    minZoom: 1,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
     id: '',
     accessToken: ''
@@ -70,6 +70,7 @@ class Map extends Component {
     this.entityShortName = this.entityShortName.bind(this);
     this.transformToGeoJSON = this.transformToGeoJSON.bind(this);
     this.getDataFromUrl = this.getDataFromUrl.bind(this);
+    this.transformSparqlQueryToGeoJSON = this.transformSparqlQueryToGeoJSON.bind(this);
   }
 
   componentDidMount() {
@@ -155,7 +156,11 @@ class Map extends Component {
     var cur = this;
     var decodeURI = decodeURIComponent(url);
     decodeURI = decodeURI.slice(5);
-    console.log(decodeURI);
+    console.log(url.slice(1,4));
+    this.geoCollection = {
+      "type": "FeatureCollection",
+      "features": []
+    };
     axios({
       method: 'get',
       url: url.slice(5),
@@ -164,8 +169,22 @@ class Map extends Component {
           'Content-Type': 'application/ld+json, application/json'
       }
     }).then(function(res) {
-      console.log(res);
-      cur.props.actions.getDataFromUrl(res.data);
+      if(url.slice(1,4)=="sql"){
+        console.log(res.data.results.bindings);
+        cur.transformSparqlQueryToGeoJSON(res.data.results.bindings);
+        cur.props.actions.getDataFromUrl(cur.geoCollection);
+        console.log(cur.geoCollection);
+        cur.setState({
+          numUser: cur.geoCollection.features.length,
+          geojson: cur.geoCollection
+        });}
+        else{
+          cur.props.actions.getDataFromUrl(res.data);
+          cur.setState({
+            numUser: res.data.features.length,
+            geojson: res.data
+          });
+        }
     });
   }
 
@@ -225,6 +244,41 @@ class Map extends Component {
           "properties" : {
             "NAME": value["name"],
             "URL" : value["url"]
+          }
+        }
+        console.log("value:",value);
+        console.log("mapping data index:",index,"-- geoFeatures data:",geoFeatures);
+        this.geoCollection.features.push(geoFeatures);
+        console.log("mapping data geoCollection:",this.geoCollection);
+      });
+    console.log("after transform geoCollection is:",this.geoCollection);
+    //console.log("defalut geo",defaultGeoCollection);
+        /*{ "type": "Feature",
+          "properties": {
+            "NAME": "user2",
+            "URL": "http:\/\/www.xxx.xxx\/xxx\/xxx\/"},
+          "geometry": {
+            "type": "Point",
+            "coordinates": [ 2.354345,48.816703 ] }
+        }*/
+  }
+  transformSparqlQueryToGeoJSON(data){
+    console.log("transform data",data);
+    console.log("current geoCollection data",this.geoCollection);
+    //console.log("defalut geo",defaultGeoCollection);
+    data.map(
+      (value, index)=>
+      {
+
+        var geoFeatures ={
+          "type": "Feature",
+          "geometry" : {
+            "type": "Point",
+            "coordinates": [value["LON"]["value"], value["LAT"]["value"]],
+          },
+          "properties" : {
+            "NAME": value["LAB"]["value"],
+            "URL" : value["LAB"]["value"]
           }
         }
         console.log("value:",value);
@@ -337,7 +391,7 @@ class Map extends Component {
 
     // re-add the geojson so that it filters out subway lines which do not match state.filter
     //console.log("remove and add data");
-    this.state.geojsonLayer.addData(this.props.serverData);
+    this.state.geojsonLayer.addData(this.state.geojson);
     // fit the map to the new geojson layer's geographic extent
     this.zoomToFeature(this.state.geojsonLayer);
   }
@@ -345,9 +399,9 @@ class Map extends Component {
   zoomToFeature(target) {
     // pad fitBounds() so features aren't hidden under the Filter UI element
     var fitBoundsParams = {
-      paddingTopLeft: [200,10],
+      paddingTopLeft: [10,10],
       paddingBottomRight: [10,10],
-      maxZoom : 15
+      maxZoom : 14
     };
     console.log("zooming");
     // set the map's center & zoom so that it fits the geographic extent of the layer
@@ -395,7 +449,7 @@ class Map extends Component {
           // use sort() to put our values in alphanumeric order
           UserNames.sort();
           // finally add a value to represent all of the subway lines
-          UserNames.unshift('All Drivers');
+          UserNames.unshift('All Info');
         }
       }
 

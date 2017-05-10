@@ -9093,7 +9093,8 @@
 	  CLICK: 'CLICK',
 	  SetLastChangeState: 'SetLastChangeState',
 	  UpdateTreeData : "UpdateTreeData",
-	  GetDataFromUrl : "GetDataFromUrl"
+	  GetDataFromUrl : "GetDataFromUrl",
+	  UpdateServerData : "UpdateServerData"
 	};
 
 
@@ -13614,6 +13615,12 @@
 	      newdata
 	    }
 	  },
+	  updateServerData(serverData) {
+	    return {
+	      type: actionTypes.UpdateServerData,
+	      serverData
+	    }
+	  },
 	  getDataFromUrl(urlData) {
 	    return {
 	      type: actionTypes.GetDataFromUrl,
@@ -15138,9 +15145,9 @@
 	config.params = {
 	  center: [2.334345, 48.836703],
 	  zoomControl: false,
-	  zoom: 13,
-	  maxZoom: 19,
-	  minZoom: 11,
+	  zoom: 1,
+	  maxZoom: 30,
+	  minZoom: 1,
 	  scrollwheel: false,
 	  legends: true,
 	  infoControl: false,
@@ -15150,7 +15157,7 @@
 	config.tileLayer = {
 	  uri: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
 	  params: {
-	    minZoom: 11,
+	    minZoom: 1,
 	    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
 	    id: '',
 	    accessToken: ''
@@ -15195,6 +15202,7 @@
 	    _this.entityShortName = _this.entityShortName.bind(_this);
 	    _this.transformToGeoJSON = _this.transformToGeoJSON.bind(_this);
 	    _this.getDataFromUrl = _this.getDataFromUrl.bind(_this);
+	    _this.transformSparqlQueryToGeoJSON = _this.transformSparqlQueryToGeoJSON.bind(_this);
 	    return _this;
 	  }
 	
@@ -15249,7 +15257,7 @@
 	        console.log(this.geoCollection);
 	        this.filterGeoJSONLayer();
 	      }
-	      if (prevState.geojson && (0, _MD2.default)(JSON.stringify(this.state.geojson)) !== (0, _MD2.default)(JSON.stringify(prevState.geojson))) {
+	      if (prevProps.serverData && (0, _MD2.default)(JSON.stringify(this.props.serverData)) !== (0, _MD2.default)(JSON.stringify(prevState.serverData))) {
 	        // filter / re-render the geojson overlay
 	        console.log("hello3");
 	        console.log(this.geoCollection);
@@ -15286,7 +15294,11 @@
 	      var cur = this;
 	      var decodeURI = decodeURIComponent(url);
 	      decodeURI = decodeURI.slice(5);
-	      console.log(decodeURI);
+	      console.log(url.slice(1, 4));
+	      this.geoCollection = {
+	        "type": "FeatureCollection",
+	        "features": []
+	      };
 	      (0, _axios2.default)({
 	        method: 'get',
 	        url: url.slice(5),
@@ -15295,8 +15307,22 @@
 	          'Content-Type': 'application/ld+json, application/json'
 	        }
 	      }).then(function (res) {
-	        console.log(res);
-	        cur.props.actions.getDataFromUrl(res.data);
+	        if (url.slice(1, 4) == "sql") {
+	          console.log(res.data.results.bindings);
+	          cur.transformSparqlQueryToGeoJSON(res.data.results.bindings);
+	          cur.props.actions.getDataFromUrl(cur.geoCollection);
+	          console.log(cur.geoCollection);
+	          cur.setState({
+	            numUser: cur.geoCollection.features.length,
+	            geojson: cur.geoCollection
+	          });
+	        } else {
+	          cur.props.actions.getDataFromUrl(res.data);
+	          cur.setState({
+	            numUser: res.data.features.length,
+	            geojson: res.data
+	          });
+	        }
 	      });
 	    }
 	  }, {
@@ -15379,6 +15405,43 @@
 	      }*/
 	    }
 	  }, {
+	    key: 'transformSparqlQueryToGeoJSON',
+	    value: function transformSparqlQueryToGeoJSON(data) {
+	      var _this4 = this;
+	
+	      console.log("transform data", data);
+	      console.log("current geoCollection data", this.geoCollection);
+	      //console.log("defalut geo",defaultGeoCollection);
+	      data.map(function (value, index) {
+	
+	        var geoFeatures = {
+	          "type": "Feature",
+	          "geometry": {
+	            "type": "Point",
+	            "coordinates": [value["LON"]["value"], value["LAT"]["value"]]
+	          },
+	          "properties": {
+	            "NAME": value["LAB"]["value"],
+	            "URL": value["LAB"]["value"]
+	          }
+	        };
+	        console.log("value:", value);
+	        console.log("mapping data index:", index, "-- geoFeatures data:", geoFeatures);
+	        _this4.geoCollection.features.push(geoFeatures);
+	        console.log("mapping data geoCollection:", _this4.geoCollection);
+	      });
+	      console.log("after transform geoCollection is:", this.geoCollection);
+	      //console.log("defalut geo",defaultGeoCollection);
+	      /*{ "type": "Feature",
+	        "properties": {
+	          "NAME": "user2",
+	          "URL": "http:\/\/www.xxx.xxx\/xxx\/xxx\/"},
+	        "geometry": {
+	          "type": "Point",
+	          "coordinates": [ 2.354345,48.816703 ] }
+	      }*/
+	    }
+	  }, {
 	    key: 'postData',
 	    value: function postData() {
 	
@@ -15421,6 +15484,7 @@
 	        console.log("plot done");
 	        if ((0, _MD2.default)(JSON.stringify(cur.geoCollection)) !== (0, _MD2.default)(JSON.stringify(cur.prevGeoCollection))) {
 	          console.log("data diffs, reset state");
+	          cur.props.actions.updateServerData(cur.geoCollection);
 	          cur.setState({
 	            numUser: cur.geoCollection.features.length,
 	            geojson: cur.geoCollection
@@ -15480,10 +15544,11 @@
 	    value: function zoomToFeature(target) {
 	      // pad fitBounds() so features aren't hidden under the Filter UI element
 	      var fitBoundsParams = {
-	        paddingTopLeft: [200, 10],
+	        paddingTopLeft: [10, 10],
 	        paddingBottomRight: [10, 10],
-	        maxZoom: 15
+	        maxZoom: 14
 	      };
+	      console.log("zooming");
 	      // set the map's center & zoom so that it fits the geographic extent of the layer
 	      this.state.map.fitBounds(target.getBounds(), fitBoundsParams);
 	    }
@@ -15532,7 +15597,7 @@
 	            // use sort() to put our values in alphanumeric order
 	            UserNames.sort();
 	            // finally add a value to represent all of the subway lines
-	            UserNames.unshift('All Drivers');
+	            UserNames.unshift('All Info');
 	          }
 	        }
 	
@@ -15593,7 +15658,8 @@
 	var mapStateToProps = function mapStateToProps(state) {
 	  return {
 	    urlData: state.urlData,
-	    defaultGeoData: state.defaultGeoData
+	    defaultGeoData: state.defaultGeoData,
+	    serverData: state.serverData
 	  };
 	};
 	
@@ -40696,7 +40762,8 @@
 	  lastChange:null,
 	  treeData : {},
 	  urlData :null,
-	  defaultGeoData : defaultGeoData
+	  defaultGeoData : defaultGeoData,
+	  serverData:null
 	  // Loads default language content (en) as an initial state
 	};
 	
@@ -40722,6 +40789,11 @@
 	      console.log("GetDataFromUrl",action.urlData);
 	      return Object.assign({}, state, {
 	        urlData:action.urlData
+	      })
+	    case actionTypes.UpdateServerData:
+	      console.log("UpdateServerData :",action.serverData);
+	      return Object.assign({}, state, {
+	        serverData:action.serverData
 	      })
 	    default:
 	      return state;
@@ -40849,4 +40921,4 @@
 
 /***/ }
 /******/ ])));
-//# sourceMappingURL=main.16dca396.js.map
+//# sourceMappingURL=main.8c93f0c9.js.map
