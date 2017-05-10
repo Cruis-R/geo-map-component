@@ -2,5 +2,6 @@ module.exports = {
   CLICK: 'CLICK',
   SetLastChangeState: 'SetLastChangeState',
   UpdateTreeData : "UpdateTreeData",
-  GetDataFromUrl : "GetDataFromUrl"
+  GetDataFromUrl : "GetDataFromUrl",
+  UpdateServerData : "UpdateServerData"
 };

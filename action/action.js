@@ -19,6 +19,12 @@ let actions = {
       newdata
     }
   },
+  updateServerData(serverData) {
+    return {
+      type: actionTypes.UpdateServerData,
+      serverData
+    }
+  },
   getDataFromUrl(urlData) {
     return {
       type: actionTypes.GetDataFromUrl,

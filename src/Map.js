@@ -121,7 +121,7 @@ class Map extends Component {
       console.log(this.geoCollection);
       this.filterGeoJSONLayer();
     }
-    if (prevState.geojson&&md5(JSON.stringify(this.state.geojson))!==md5(JSON.stringify(prevState.geojson))) {
+    if (prevProps.serverData&&md5(JSON.stringify(this.props.serverData))!==md5(JSON.stringify(prevState.serverData))) {
       // filter / re-render the geojson overlay
       console.log("hello3");
       console.log(this.geoCollection);
@@ -284,6 +284,7 @@ class Map extends Component {
       console.log("plot done");
       if(md5(JSON.stringify(cur.geoCollection))!==md5(JSON.stringify(cur.prevGeoCollection))){
         console.log("data diffs, reset state");
+        cur.props.actions.updateServerData(cur.geoCollection);
         cur.setState({
           numUser: cur.geoCollection.features.length,
           geojson: cur.geoCollection
@@ -336,7 +337,7 @@ class Map extends Component {
 
     // re-add the geojson so that it filters out subway lines which do not match state.filter
     //console.log("remove and add data");
-    this.state.geojsonLayer.addData(this.state.geojson);
+    this.state.geojsonLayer.addData(this.props.serverData);
     // fit the map to the new geojson layer's geographic extent
     this.zoomToFeature(this.state.geojsonLayer);
   }
@@ -348,6 +349,7 @@ class Map extends Component {
       paddingBottomRight: [10,10],
       maxZoom : 15
     };
+    console.log("zooming");
     // set the map's center & zoom so that it fits the geographic extent of the layer
     this.state.map.fitBounds(target.getBounds(), fitBoundsParams);
   }
@@ -453,7 +455,8 @@ class Map extends Component {
 
 const mapStateToProps = state => ({
   urlData:state.urlData,
-  defaultGeoData:state.defaultGeoData
+  defaultGeoData:state.defaultGeoData,
+  serverData:state.serverData
 })
 
 const mapDispatchToProps = dispatch => ({

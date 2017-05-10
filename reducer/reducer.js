@@ -5,7 +5,8 @@ const initialState = {
   lastChange:null,
   treeData : {},
   urlData :null,
-  defaultGeoData : defaultGeoData
+  defaultGeoData : defaultGeoData,
+  serverData:null
   // Loads default language content (en) as an initial state
 };
 
@@ -31,6 +32,11 @@ var reducer = function (state = initialState, action) {
       console.log("GetDataFromUrl",action.urlData);
       return Object.assign({}, state, {
         urlData:action.urlData
+      })
+    case actionTypes.UpdateServerData:
+      console.log("UpdateServerData :",action.serverData);
+      return Object.assign({}, state, {
+        serverData:action.serverData
       })
     default:
       return state;
