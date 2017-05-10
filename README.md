@@ -30,13 +30,15 @@ chromium-browser --disable-web-security --user-data-dir
 
 # If no server is running(default)
 npm install
+
 npm start
 
 # get geo data from url
 add ?url=<your geojson data address here>  after the url
-e.g.
-http://localhost:3000/?utl=https://api.myjson.com/bins/o5k9x
+e.g. http://localhost:3000/?utl=https://api.myjson.com/bins/o5k9x
+
 For testing
+
 I already uploaded a simple geojson here with the address:https://api.myjson.com/bins/o5k9x, so it is working.
 Info for [geojson format](http://geojson.org/)
 
