@@ -60,7 +60,7 @@ class Map extends Component {
     this.geoCollection = {};
     this.prevGeoCollection = null;
     this._mapNode = null;
-    this.updateMap = this.updateMap.bind(this);
+    this.updateFilter = this.updateFilter.bind(this);
     this.onEachFeature = this.onEachFeature.bind(this);
     this.pointToLayer = this.pointToLayer.bind(this);
     this.filterFeatures = this.filterFeatures.bind(this);
@@ -355,10 +355,10 @@ class Map extends Component {
 
   }
 
-  updateMap(e) {
+  updateFilter(e) {
     let userSelected = e.target.value;
     // change the subway line filter
-    if (userSelected === "All Drivers") {
+    if (userSelected == "All Info") {
       userSelected = "*";
     }
     // update our state with the new filter value
@@ -499,7 +499,7 @@ class Map extends Component {
           cur.state.geojson &&
             <Filter2
               curState={cur.state.geojson}
-              filterUsers={cur.updateMap} />
+              filterUsers={cur.updateFilter} />
           }
         <div ref={(node) => { /*console.log("hello"+node+this.count);this.count=this.count+1;*/cur._mapNode = node}} id="map" />
       </div>

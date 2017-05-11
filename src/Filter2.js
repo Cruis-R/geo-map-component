@@ -39,7 +39,7 @@ class Filter2 extends Component{
             // use sort() to put our values in alphanumeric order
             this.userNames.sort();
             // finally add a value to represent all of the subway lines
-            this.userNames.unshift('All Drivers');
+            this.userNames.unshift('All Info');
           }
         }
       }
