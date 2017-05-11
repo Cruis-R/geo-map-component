@@ -10,7 +10,7 @@ npm start
 
 # get geo data from url
 add ?url=<your geojson data address here>  after the url
-e.g. http://localhost:3000/?utl=https://api.myjson.com/bins/o5k9x
+e.g. http://localhost:3000/?url=https://api.myjson.com/bins/o5k9x
 
 I already uploaded [a simple geojson](https://api.myjson.com/bins/o5k9x), so you can test if with the given link. Also you can upload your own and test it.
 Info for [geojson format](https://geojson.org/)
