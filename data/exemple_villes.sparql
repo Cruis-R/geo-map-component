@@ -1,0 +1,30 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dbo: <http://dbpedia.org/ontology/>
+Prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+
+# For endpoint (server) : http://dbpedia.org/sparql
+# 100 cities with coordinates & label
+
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dbo: <http://dbpedia.org/ontology/>
+Prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+
+CONSTRUCT {
+    ?sub a dbo:Place .
+    ?sub geo:long ?LON .
+    ?sub geo:lat ?LAT .
+    ?sub rdfs:label ?LAB.
+}
+WHERE {
+  GRAPH ?GRAPH {
+  # ?sub ?pred ?obj .
+  ?sub a dbo:Place .
+    # filter( ?obj != dbo:Place )
+    ?sub geo:long ?LON .
+    ?sub geo:lat ?LAT .
+    ?sub rdfs:label ?LAB.
+    filter( lang(?LAB) = 'fr' )
+  }
+}
+LIMIT 100
