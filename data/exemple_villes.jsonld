@@ -1,735 +1,520 @@
 {
   "@graph" : [ {
-    "@id" : "dbr:Aalen",
-    "@type" : "dbo:Place",
+    "@id" : "dbr:Alicudi",
+    "@type" : "dbo:PopulatedPlace",
+    "subject" : "dbc:Aeolian_Islands",
     "label" : {
       "@language" : "fr",
-      "@value" : "Aalen"
+      "@value" : "Alicudi"
     },
-    "lat" : [ "48.850555419921875", "48.833332061767578125" ],
-    "long" : [ "10.095555305480957031", "10.100000381469726562" ]
+    "lat" : "38.545833587646484375",
+    "long" : "14.350000381469726562"
   }, {
-    "@id" : "dbr:Aarau",
-    "@type" : "dbo:Place",
+    "@id" : "dbr:Amalfi",
+    "@type" : "dbo:PopulatedPlace",
+    "subject" : "dbc:Amalfi_Coast",
     "label" : {
       "@language" : "fr",
-      "@value" : "Aarau"
+      "@value" : "Amalfi (Italie)"
     },
-    "lat" : "47.40000152587890625",
-    "long" : "8.0500001907348632812"
+    "lat" : "40.633335113525390625",
+    "long" : "14.600000381469726562"
   }, {
-    "@id" : "dbr:Abakan",
-    "@type" : "dbo:Place",
+    "@id" : "dbr:Aquileia",
+    "@type" : "dbo:PopulatedPlace",
+    "subject" : "dbc:Aquileia",
     "label" : {
       "@language" : "fr",
-      "@value" : "Abakan"
+      "@value" : "Aquilée"
     },
-    "lat" : "53.71666717529296875",
-    "long" : "91.46666717529296875"
+    "lat" : "45.769725799560546875",
+    "long" : "13.371191978454589844"
   }, {
-    "@id" : "dbr:Abbotsford_House",
-    "@type" : "dbo:Place",
+    "@id" : "dbr:Atrani",
+    "@type" : "dbo:PopulatedPlace",
+    "subject" : "dbc:Amalfi_Coast",
     "label" : {
       "@language" : "fr",
-      "@value" : "Abbotsford (Écosse)"
+      "@value" : "Atrani"
     },
-    "lat" : "55.59972381591796875",
-    "long" : "-2.7819445133209228516"
+    "lat" : "40.633335113525390625",
+    "long" : "14.616666793823242188"
   }, {
-    "@id" : "dbr:Abensberg",
-    "@type" : "dbo:Place",
+    "@id" : "dbr:Basiluzzo",
+    "@type" : "dbo:PopulatedPlace",
+    "subject" : "dbc:Aeolian_Islands",
     "label" : {
       "@language" : "fr",
-      "@value" : "Abensberg"
+      "@value" : "Basiluzzo"
     },
-    "lat" : "48.799999237060546875",
-    "long" : "11.850000381469726562"
+    "lat" : "38.663333892822265625",
+    "long" : "15.113888740539550781"
   }, {
-    "@id" : "dbr:Aberdare",
-    "@type" : "dbo:Place",
+    "@id" : "dbr:Bath,_Somerset",
+    "@type" : "dbo:PopulatedPlace",
+    "subject" : "dbc:World_Heritage_Sites_in_England",
     "label" : {
       "@language" : "fr",
-      "@value" : "Aberdare (pays de Galles)"
+      "@value" : "Bath"
     },
-    "lat" : "51.713001251220703125",
-    "long" : "-3.4449999332427978516"
+    "lat" : "51.380001068115234375",
+    "long" : "-2.3599998950958251953"
   }, {
-    "@id" : "dbr:Aberdeen,_South_Dakota",
-    "@type" : "dbo:Place",
+    "@id" : "dbr:Biertan",
+    "@type" : "dbo:PopulatedPlace",
+    "subject" : "dbc:Villages_with_fortified_churches_in_Transylvania",
     "label" : {
       "@language" : "fr",
-      "@value" : "Aberdeen (Dakota du Sud)"
+      "@value" : "Biertan"
     },
-    "lat" : "45.4647216796875",
-    "long" : "-98.48638916015625"
+    "lat" : "46.139720916748046875",
+    "long" : "24.523611068725585938"
   }, {
-    "@id" : "dbr:Aberdour",
-    "@type" : "dbo:Place",
+    "@id" : "dbr:Blaenavon",
+    "@type" : "dbo:PopulatedPlace",
+    "subject" : "dbc:World_Heritage_Sites_in_Wales",
     "label" : {
       "@language" : "fr",
-      "@value" : "Aberdour"
+      "@value" : "Blaenavon"
     },
-    "lat" : "56.052776336669921875",
-    "long" : "-3.302104949951171875"
+    "lat" : "51.77362823486328125",
+    "long" : "-3.0827798843383789062"
   }, {
-    "@id" : "dbr:Aberfoyle,_Stirling",
-    "@type" : "dbo:Place",
+    "@id" : "dbr:Castiglione_d'Orcia",
+    "@type" : "dbo:PopulatedPlace",
+    "subject" : "dbc:Val_d'Orcia",
     "label" : {
       "@language" : "fr",
-      "@value" : "Aberfoyle"
+      "@value" : "Castiglione d'Orcia"
     },
-    "lat" : "56.1790008544921875",
-    "long" : "-4.3850002288818359375"
+    "lat" : "43.016666412353515625",
+    "long" : "11.616666793823242188"
   }, {
-    "@id" : "dbr:Abergavenny",
-    "@type" : "dbo:Place",
+    "@id" : "dbr:Cetara,_Campania",
+    "@type" : "dbo:PopulatedPlace",
+    "subject" : "dbc:Amalfi_Coast",
     "label" : {
       "@language" : "fr",
-      "@value" : "Abergavenny"
+      "@value" : "Cetara"
     },
-    "lat" : "51.824001312255859375",
-    "long" : "-3.0167000293731689453"
+    "lat" : "40.65000152587890625",
+    "long" : "14.699999809265136719"
   }, {
-    "@id" : "dbr:Accrington",
-    "@type" : "dbo:Place",
+    "@id" : "dbr:Conca_dei_Marini",
+    "@type" : "dbo:PopulatedPlace",
+    "subject" : "dbc:Amalfi_Coast",
     "label" : {
       "@language" : "fr",
-      "@value" : "Accrington"
+      "@value" : "Conca dei Marini"
     },
-    "lat" : "53.753368377685546875",
-    "long" : "-2.3638401031494140625"
+    "lat" : "40.616664886474609375",
+    "long" : "14.566666603088378906"
   }, {
-    "@id" : "dbr:Acropolis_of_Athens",
-    "@type" : "dbo:Place",
+    "@id" : "dbr:Câlnic,_Alba",
+    "@type" : "dbo:PopulatedPlace",
+    "subject" : "dbc:Villages_with_fortified_churches_in_Transylvania",
     "label" : {
       "@language" : "fr",
-      "@value" : "Acropole d'Athènes"
+      "@value" : "Câlnic"
     },
-    "lat" : "37.9714202880859375",
-    "long" : "23.726165771484375"
+    "lat" : "45.886112213134765625",
+    "long" : "23.653055191040039062"
   }, {
-    "@id" : "dbr:Aegean_Sea",
-    "@type" : "dbo:Place",
+    "@id" : "dbr:Delos",
+    "@type" : "dbo:PopulatedPlace",
+    "subject" : "dbc:Delos",
     "label" : {
       "@language" : "fr",
-      "@value" : "Mer Égée"
+      "@value" : "Délos"
     },
-    "lat" : [ "36.46666717529296875", "39.0" ],
-    "long" : [ "22.950000762939453125", "25.0" ]
+    "lat" : "37.39333343505859375",
+    "long" : "25.27111053466796875"
   }, {
-    "@id" : "dbr:Ajaccio",
-    "@type" : "dbo:Place",
+    "@id" : "dbr:Diyarbakır",
+    "@type" : "dbo:PopulatedPlace",
+    "subject" : "dbc:Diyarbakır",
     "label" : {
       "@language" : "fr",
-      "@value" : "Ajaccio"
+      "@value" : "Diyarbakır"
     },
-    "lat" : "41.926700592041015625",
-    "long" : "8.73690032958984375"
+    "lat" : "37.909999847412109375",
+    "long" : "40.240001678466796875"
   }, {
-    "@id" : "dbr:Ajanta_Caves",
-    "@type" : "dbo:Place",
+    "@id" : "dbr:Dubrovnik",
+    "@type" : "dbo:PopulatedPlace",
+    "subject" : "dbc:Dubrovnik",
     "label" : {
       "@language" : "fr",
-      "@value" : "Ajantâ"
+      "@value" : "Dubrovnik"
     },
-    "lat" : "20.552377700805664062",
-    "long" : "75.700439453125"
+    "lat" : "42.640277862548828125",
+    "long" : "18.108333587646484375"
   }, {
-    "@id" : "dbr:Akkadian_Empire",
-    "@type" : "dbo:Place",
+    "@id" : "dbr:Dârjiu",
+    "@type" : "dbo:PopulatedPlace",
+    "subject" : "dbc:Villages_with_fortified_churches_in_Transylvania",
     "label" : {
       "@language" : "fr",
-      "@value" : "Empire d'Akkad"
+      "@value" : "Dârjiu"
     },
-    "lat" : "33.09999847412109375",
-    "long" : "44.09999847412109375"
+    "lat" : "46.200000762939453125",
+    "long" : "25.200000762939453125"
   }, {
-    "@id" : "dbr:Alabama_River",
-    "@type" : "dbo:Place",
+    "@id" : "dbr:Florence",
+    "@type" : "dbo:PopulatedPlace",
+    "subject" : "dbc:Florence",
     "label" : {
       "@language" : "fr",
-      "@value" : "Alabama (rivière)"
+      "@value" : "Florence"
     },
-    "lat" : "31.136388778686523438",
-    "long" : "-87.9441680908203125"
+    "lat" : "43.78333282470703125",
+    "long" : "11.25"
   }, {
-    "@id" : "dbr:Albion,_Michigan",
-    "@type" : "dbo:Place",
+    "@id" : "dbr:Furore",
+    "@type" : "dbo:PopulatedPlace",
+    "subject" : "dbc:Amalfi_Coast",
     "label" : {
       "@language" : "fr",
-      "@value" : "Albion (Michigan)"
+      "@value" : "Furore"
     },
-    "lat" : "42.24666595458984375",
-    "long" : "-84.75333404541015625"
+    "lat" : "40.621387481689453125",
+    "long" : "14.549444198608398438"
   }, {
-    "@id" : "dbr:Alexandria,_Louisiana",
-    "@type" : "dbo:Place",
+    "@id" : "dbr:Genoa",
+    "@type" : "dbo:PopulatedPlace",
+    "subject" : "dbc:Genoa",
     "label" : {
       "@language" : "fr",
-      "@value" : "Alexandria (Louisiane)"
+      "@value" : "Gênes"
     },
-    "lat" : "31.29277801513671875",
-    "long" : "-92.45916748046875"
+    "lat" : "44.41110992431640625",
+    "long" : "8.93277740478515625"
   }, {
-    "@id" : "dbr:Alexandria,_Romania",
-    "@type" : "dbo:Place",
+    "@id" : "dbr:Kotor",
+    "@type" : "dbo:PopulatedPlace",
+    "subject" : "dbc:Kotor",
     "label" : {
       "@language" : "fr",
-      "@value" : "Alexandria (Teleorman)"
+      "@value" : "Kotor"
     },
-    "lat" : "43.9686126708984375",
-    "long" : "25.333333969116210938"
+    "lat" : "42.43000030517578125",
+    "long" : "18.770000457763671875"
   }, {
-    "@id" : "dbr:Alexandria,_West_Dunbartonshire",
-    "@type" : "dbo:Place",
+    "@id" : "dbr:Lipari",
+    "@type" : "dbo:PopulatedPlace",
+    "subject" : "dbc:Aeolian_Islands",
     "label" : {
       "@language" : "fr",
-      "@value" : "Alexandria (Écosse)"
+      "@value" : "Lipari"
     },
-    "lat" : "55.979999542236328125",
-    "long" : "-4.5799999237060546875"
+    "lat" : "38.46666717529296875",
+    "long" : "14.949999809265136719"
   }, {
-    "@id" : "dbr:Algiers",
-    "@type" : "dbo:Place",
+    "@id" : "dbr:Luštica,_Herceg_Novi",
+    "@type" : "dbo:PopulatedPlace",
+    "subject" : "dbc:Bay_of_Kotor",
     "label" : {
       "@language" : "fr",
-      "@value" : "Alger"
+      "@value" : "Luštica"
     },
-    "lat" : "36.766666412353515625",
-    "long" : "3.2166666984558105469"
+    "lat" : "42.39666748046875",
+    "long" : "18.6019439697265625"
   }, {
-    "@id" : "dbr:Ames,_Iowa",
-    "@type" : "dbo:Place",
+    "@id" : "dbr:Maiori",
+    "@type" : "dbo:PopulatedPlace",
+    "subject" : "dbc:Amalfi_Coast",
     "label" : {
       "@language" : "fr",
-      "@value" : "Ames (Iowa)"
+      "@value" : "Maiori"
     },
-    "lat" : "42.03472137451171875",
-    "long" : "-93.62000274658203125"
+    "lat" : "40.65000152587890625",
+    "long" : "14.649999618530273438"
   }, {
-    "@id" : "dbr:Amsterdam_Airport_Schiphol",
-    "@type" : "dbo:Place",
+    "@id" : "dbr:Minori,_Campania",
+    "@type" : "dbo:PopulatedPlace",
+    "subject" : "dbc:Amalfi_Coast",
     "label" : {
       "@language" : "fr",
-      "@value" : "Aéroport d'Amsterdam-Schiphol"
+      "@value" : "Minori"
     },
-    "lat" : [ "52.308055877685546875", "52.312000274658203125" ],
-    "long" : [ "4.8000001907348632812", "4.7641668319702148438" ]
+    "lat" : "40.65000152587890625",
+    "long" : "14.616666793823242188"
   }, {
-    "@id" : "dbr:Anadyr_River",
-    "@type" : "dbo:Place",
+    "@id" : "dbr:Montalcino",
+    "@type" : "dbo:PopulatedPlace",
+    "subject" : "dbc:Val_d'Orcia",
     "label" : {
       "@language" : "fr",
-      "@value" : "Anadyr (fleuve)"
+      "@value" : "Montalcino"
     },
-    "lat" : "67.0",
-    "long" : "173.0"
+    "lat" : "43.049999237060546875",
+    "long" : "11.483333587646484375"
   }, {
-    "@id" : "dbr:Andersonville,_Georgia",
-    "@type" : "dbo:Place",
+    "@id" : "dbr:Nesebar",
+    "@type" : "dbo:PopulatedPlace",
+    "subject" : "dbc:Nesebar",
     "label" : {
       "@language" : "fr",
-      "@value" : "Andersonville (Géorgie)"
+      "@value" : "Nessebar (ville)"
     },
-    "lat" : "32.1969451904296875",
-    "long" : "-84.14167022705078125"
+    "lat" : "42.65000152587890625",
+    "long" : "27.733333587646484375"
   }, {
-    "@id" : "dbr:Ann_Arbor,_Michigan",
-    "@type" : "dbo:Place",
+    "@id" : "dbr:New_Lanark",
+    "@type" : "dbo:PopulatedPlace",
+    "subject" : "dbc:World_Heritage_Sites_in_Scotland",
     "label" : {
       "@language" : "fr",
-      "@value" : "Ann Arbor"
+      "@value" : "New Lanark"
     },
-    "lat" : [ "42.22299957275390625", "42.2813873291015625" ],
-    "long" : [ "-83.7483367919921875", "-83.74566650390625" ]
+    "lat" : "55.659999847412109375",
+    "long" : "-3.7799999713897705078"
   }, {
-    "@id" : "dbr:Annapolis_Valley",
-    "@type" : "dbo:Place",
+    "@id" : "dbr:Panarea",
+    "@type" : "dbo:PopulatedPlace",
+    "subject" : "dbc:Aeolian_Islands",
     "label" : {
       "@language" : "fr",
-      "@value" : "Vallée d'Annapolis"
+      "@value" : "Panarea"
     },
-    "lat" : "45.0",
-    "long" : "-64.91666412353515625"
+    "lat" : "38.637500762939453125",
+    "long" : "15.066666603088378906"
   }, {
-    "@id" : "ns6:_Mount_Cook",
-    "@type" : "dbo:Place",
+    "@id" : "dbr:Pienza",
+    "@type" : "dbo:PopulatedPlace",
+    "subject" : "dbc:Val_d'Orcia",
     "label" : {
       "@language" : "fr",
-      "@value" : "Aoraki/Mont Cook"
+      "@value" : "Pienza"
     },
-    "lat" : "-43.5957489013671875",
-    "long" : "170.1410369873046875"
+    "lat" : "43.078609466552734375",
+    "long" : "11.678889274597167969"
   }, {
-    "@id" : "dbr:Apollo_1",
-    "@type" : "dbo:Place",
+    "@id" : "dbr:Positano",
+    "@type" : "dbo:PopulatedPlace",
+    "subject" : "dbc:Amalfi_Coast",
     "label" : {
       "@language" : "fr",
-      "@value" : "Apollo 1"
+      "@value" : "Positano"
     },
-    "lat" : "28.521820068359375",
-    "long" : "-80.56125640869140625"
+    "lat" : "40.633335113525390625",
+    "long" : "14.483333587646484375"
   }, {
-    "@id" : "dbr:Apollo_10",
-    "@type" : "dbo:Place",
+    "@id" : "dbr:Praiano",
+    "@type" : "dbo:PopulatedPlace",
+    "subject" : "dbc:Amalfi_Coast",
     "label" : {
       "@language" : "fr",
-      "@value" : "Apollo 10"
+      "@value" : "Praiano"
     },
-    "lat" : "-15.033333778381347656",
-    "long" : "-164.649993896484375"
+    "lat" : "40.616664886474609375",
+    "long" : "14.533333778381347656"
   }, {
-    "@id" : "dbr:Apollo_11",
-    "@type" : "dbo:Place",
+    "@id" : "dbr:Prejmer",
+    "@type" : "dbo:PopulatedPlace",
+    "subject" : "dbc:Villages_with_fortified_churches_in_Transylvania",
     "label" : {
       "@language" : "fr",
-      "@value" : "Apollo 11"
+      "@value" : "Prejmer"
     },
-    "lat" : "13.316666603088378906",
-    "long" : "-169.149993896484375"
+    "lat" : "45.71666717529296875",
+    "long" : "25.766666412353515625"
   }, {
-    "@id" : "dbr:Apollo_12",
-    "@type" : "dbo:Place",
+    "@id" : "dbr:Ravello",
+    "@type" : "dbo:PopulatedPlace",
+    "subject" : "dbc:Amalfi_Coast",
     "label" : {
       "@language" : "fr",
-      "@value" : "Apollo 12"
+      "@value" : "Ravello"
     },
-    "lat" : "-15.783333778381347656",
-    "long" : "-165.149993896484375"
+    "lat" : "40.65000152587890625",
+    "long" : "14.616666793823242188"
   }, {
-    "@id" : "dbr:Apollo_13",
-    "@type" : "dbo:Place",
+    "@id" : "dbr:Ravenna",
+    "@type" : "dbo:PopulatedPlace",
+    "subject" : "dbc:Ravenna",
     "label" : {
       "@language" : "fr",
-      "@value" : "Apollo 13"
+      "@value" : "Ravenne"
     },
-    "lat" : "-21.6399993896484375",
-    "long" : "-165.361663818359375"
+    "lat" : "44.416667938232421875",
+    "long" : "12.199999809265136719"
   }, {
-    "@id" : "dbr:Apollo_14",
-    "@type" : "dbo:Place",
+    "@id" : "dbr:Roman_Catholic_Archdiocese_of_Florence",
+    "@type" : "dbo:PopulatedPlace",
+    "subject" : "dbc:Florence",
     "label" : {
       "@language" : "fr",
-      "@value" : "Apollo 14"
+      "@value" : "Archidiocèse de Florence"
     },
-    "lat" : "-27.016666412353515625",
-    "long" : "-172.649993896484375"
+    "lat" : "43.783298492431640625",
+    "long" : "11.25"
   }, {
-    "@id" : "dbr:Apollo_15",
-    "@type" : "dbo:Place",
+    "@id" : "dbr:Roman_Catholic_Archdiocese_of_Split-Makarska",
+    "@type" : "dbo:PopulatedPlace",
+    "subject" : "dbc:Split,_Croatia",
     "label" : {
       "@language" : "fr",
-      "@value" : "Apollo 15"
+      "@value" : "Archidiocèse de Split-Makarska"
     },
-    "lat" : "26.116666793823242188",
-    "long" : "-158.133331298828125"
+    "lat" : "43.508098602294921875",
+    "long" : "16.440500259399414062"
   }, {
-    "@id" : "dbr:Apollo_16",
-    "@type" : "dbo:Place",
+    "@id" : "dbr:Roman_Catholic_Diocese_of_Kotor",
+    "@type" : "dbo:PopulatedPlace",
+    "subject" : "dbc:Kotor",
     "label" : {
       "@language" : "fr",
-      "@value" : "Apollo 16"
+      "@value" : "Diocèse de Kotor"
     },
-    "lat" : "-0.71666663885116577148",
-    "long" : "-156.2166595458984375"
+    "lat" : "42.43000030517578125",
+    "long" : "18.770000457763671875"
   }, {
-    "@id" : "dbr:Apollo_17",
-    "@type" : "dbo:Place",
+    "@id" : "dbr:Rome",
+    "@type" : "dbo:PopulatedPlace",
+    "subject" : "dbc:Rome",
     "label" : {
       "@language" : "fr",
-      "@value" : "Apollo 17"
+      "@value" : "Rome"
     },
-    "lat" : "-17.879999160766601562",
-    "long" : "-166.1100006103515625"
+    "lat" : "41.90000152587890625",
+    "long" : "12.5"
   }, {
-    "@id" : "dbr:Apollo_7",
-    "@type" : "dbo:Place",
+    "@id" : "dbr:Salina,_Sicily",
+    "@type" : "dbo:PopulatedPlace",
+    "subject" : "dbc:Aeolian_Islands",
     "label" : {
       "@language" : "fr",
-      "@value" : "Apollo 7"
+      "@value" : "Île de Salina"
     },
-    "lat" : "27.53333282470703125",
-    "long" : "-64.0666656494140625"
+    "lat" : "38.565277099609375",
+    "long" : "14.833333015441894531"
   }, {
-    "@id" : "dbr:Apollo_8",
-    "@type" : "dbo:Place",
+    "@id" : "dbr:San_Gimignano",
+    "@type" : "dbo:PopulatedPlace",
+    "subject" : "dbc:San_Gimignano",
     "label" : {
       "@language" : "fr",
-      "@value" : "Apollo 8"
+      "@value" : "San Gimignano"
     },
-    "lat" : "8.1333332061767578125",
-    "long" : "-165.01666259765625"
+    "lat" : "43.467998504638671875",
+    "long" : "11.04199981689453125"
   }, {
-    "@id" : "dbr:Apollo_9",
-    "@type" : "dbo:Place",
+    "@id" : "dbr:San_Quirico_d'Orcia",
+    "@type" : "dbo:PopulatedPlace",
+    "subject" : "dbc:Val_d'Orcia",
     "label" : {
       "@language" : "fr",
-      "@value" : "Apollo 9"
+      "@value" : "San Quirico d'Orcia"
     },
-    "lat" : "23.25",
-    "long" : "-67.9333343505859375"
+    "lat" : "43.0666656494140625",
+    "long" : "11.600000381469726562"
   }, {
-    "@id" : "dbr:Arabian_Sea",
-    "@type" : "dbo:Place",
+    "@id" : "dbr:Saschiz",
+    "@type" : "dbo:PopulatedPlace",
+    "subject" : "dbc:Villages_with_fortified_churches_in_Transylvania",
     "label" : {
       "@language" : "fr",
-      "@value" : "Mer d'Arabie"
+      "@value" : "Saschiz"
     },
-    "lat" : "18.0",
-    "long" : "66.0"
+    "lat" : "46.1833343505859375",
+    "long" : "24.96666717529296875"
   }, {
-    "@id" : "dbr:Archbishopric_of_Riga",
-    "@type" : "dbo:Place",
+    "@id" : "dbr:Scala,_Campania",
+    "@type" : "dbo:PopulatedPlace",
+    "subject" : "dbc:Amalfi_Coast",
     "label" : {
       "@language" : "fr",
-      "@value" : "Archidiocèse de Riga"
+      "@value" : "Scala (Italie)"
     },
-    "lat" : "56.96666717529296875",
-    "long" : "24.133333206176757812"
+    "lat" : "40.65000152587890625",
+    "long" : "14.600000381469726562"
   }, {
-    "@id" : "dbr:Area_51",
-    "@type" : "dbo:Place",
+    "@id" : "dbr:Split,_Croatia",
+    "@type" : "dbo:PopulatedPlace",
+    "subject" : "dbc:Split,_Croatia",
     "label" : {
       "@language" : "fr",
-      "@value" : "Zone 51"
+      "@value" : "Split"
     },
-    "lat" : "37.2350006103515625",
-    "long" : "-115.8111114501953125"
+    "lat" : "43.509998321533203125",
+    "long" : "16.450000762939453125"
   }, {
-    "@id" : "dbr:Arno",
-    "@type" : "dbo:Place",
+    "@id" : "dbr:Strombolicchio",
+    "@type" : "dbo:PopulatedPlace",
+    "subject" : "dbc:Aeolian_Islands",
     "label" : {
       "@language" : "fr",
-      "@value" : "Arno (fleuve)"
+      "@value" : "Strombolicchio"
     },
-    "lat" : "43.6833343505859375",
-    "long" : "10.283333778381347656"
+    "lat" : "38.81722259521484375",
+    "long" : "15.251667022705078125"
   }, {
-    "@id" : "dbr:Ashmore_and_Cartier_Islands",
-    "@type" : "dbo:Place",
+    "@id" : "dbr:Syracuse,_Sicily",
+    "@type" : "dbo:PopulatedPlace",
+    "subject" : "dbc:Syracuse,_Sicily",
     "label" : {
       "@language" : "fr",
-      "@value" : "Îles Ashmore-et-Cartier"
+      "@value" : "Syracuse"
     },
-    "lat" : "-12.258333206176757812",
-    "long" : "123.04166412353515625"
+    "lat" : "37.083332061767578125",
+    "long" : "15.283333778381347656"
   }, {
-    "@id" : "dbr:Assyria",
-    "@type" : "dbo:Place",
+    "@id" : "dbr:Tramonti,_Campania",
+    "@type" : "dbo:PopulatedPlace",
+    "subject" : "dbc:Amalfi_Coast",
     "label" : {
       "@language" : "fr",
-      "@value" : "Assyrie"
+      "@value" : "Tramonti"
     },
-    "lat" : "36.0",
-    "long" : "43.299999237060546875"
+    "lat" : "40.700000762939453125",
+    "long" : "14.633333206176757812"
   }, {
-    "@id" : "dbr:Astoria,_Oregon",
-    "@type" : "dbo:Place",
+    "@id" : "dbr:Valea_Viilor",
+    "@type" : "dbo:PopulatedPlace",
+    "subject" : "dbc:Villages_with_fortified_churches_in_Transylvania",
     "label" : {
       "@language" : "fr",
-      "@value" : "Astoria (Oregon)"
+      "@value" : "Valea Viilor"
     },
-    "lat" : "46.1888885498046875",
-    "long" : "-123.82111358642578125"
+    "lat" : "46.083099365234375",
+    "long" : "24.276899337768554688"
   }, {
-    "@id" : "dbr:Atlanta",
-    "@type" : "dbo:Place",
+    "@id" : "dbr:Valletta",
+    "@type" : "dbo:PopulatedPlace",
+    "subject" : "dbc:Valletta",
     "label" : {
       "@language" : "fr",
-      "@value" : "Atlanta"
+      "@value" : "La Valette"
     },
-    "lat" : "33.755001068115234375",
-    "long" : "-84.3899993896484375"
+    "lat" : "35.897777557373046875",
+    "long" : "14.512499809265136719"
   }, {
-    "@id" : "dbr:Austin,_Texas",
-    "@type" : "dbo:Place",
+    "@id" : "dbr:Vietri_sul_Mare",
+    "@type" : "dbo:PopulatedPlace",
+    "subject" : "dbc:Amalfi_Coast",
     "label" : {
       "@language" : "fr",
-      "@value" : "Austin (Texas)"
+      "@value" : "Vietri sul Mare"
     },
-    "lat" : "30.25",
-    "long" : "-97.75"
+    "lat" : "40.666667938232421875",
+    "long" : "14.733333587646484375"
   }, {
-    "@id" : "dbr:Australian_Capital_Territory",
-    "@type" : "dbo:Place",
+    "@id" : "dbr:Český_Krumlov",
+    "@type" : "dbo:PopulatedPlace",
+    "subject" : "dbc:Český_Krumlov",
     "label" : {
       "@language" : "fr",
-      "@value" : "Territoire de la capitale australienne"
+      "@value" : "Český Krumlov"
     },
-    "lat" : "35.308055877685546875",
-    "long" : "149.12445068359375"
-  }, {
-    "@id" : "dbr:Austria-Hungary",
-    "@type" : "dbo:Place",
-    "label" : {
-      "@language" : "fr",
-      "@value" : "Autriche-Hongrie"
-    },
-    "lat" : "48.200000762939453125",
-    "long" : "16.350000381469726562"
-  }, {
-    "@id" : "dbr:Azincourt",
-    "@type" : "dbo:Place",
-    "label" : {
-      "@language" : "fr",
-      "@value" : "Azincourt"
-    },
-    "lat" : "50.45999908447265625",
-    "long" : "2.1300001144409179688"
-  }, {
-    "@id" : "dbr:Baker_Island",
-    "@type" : "dbo:Place",
-    "label" : {
-      "@language" : "fr",
-      "@value" : "Île Baker"
-    },
-    "lat" : "0.19472222030162811279",
-    "long" : "-176.4794464111328125"
-  }, {
-    "@id" : "dbr:Balkans",
-    "@type" : "dbo:Place",
-    "label" : {
-      "@language" : "fr",
-      "@value" : "Balkans"
-    },
-    "lat" : "42.0",
-    "long" : "22.0"
-  }, {
-    "@id" : "dbr:Baltic_Sea",
-    "@type" : "dbo:Place",
-    "label" : {
-      "@language" : "fr",
-      "@value" : "Mer Baltique"
-    },
-    "lat" : "58.0",
-    "long" : "20.0"
-  }, {
-    "@id" : "dbr:Banda_Islands",
-    "@type" : "dbo:Place",
-    "label" : {
-      "@language" : "fr",
-      "@value" : "Îles Banda"
-    },
-    "lat" : "-4.5833334922790527344",
-    "long" : "129.9166717529296875"
-  }, {
-    "@id" : "dbr:Bank_of_China_Tower_(Hong_Kong)",
-    "@type" : "dbo:Place",
-    "label" : {
-      "@language" : "fr",
-      "@value" : "Tour de la Bank of China"
-    },
-    "lat" : "22.27916717529296875",
-    "long" : "114.1613922119140625"
-  }, {
-    "@id" : "dbr:Barcelonnette",
-    "@type" : "dbo:Place",
-    "label" : {
-      "@language" : "fr",
-      "@value" : "Barcelonnette"
-    },
-    "lat" : "44.386699676513671875",
-    "long" : "6.6531000137329101562"
-  }, {
-    "@id" : "dbr:Bassas_da_India",
-    "@type" : "dbo:Place",
-    "label" : {
-      "@language" : "fr",
-      "@value" : "Bassas da India"
-    },
-    "lat" : "-21.482500076293945312",
-    "long" : "39.67194366455078125"
-  }, {
-    "@id" : "dbr:Bayonne",
-    "@type" : "dbo:Place",
-    "label" : {
-      "@language" : "fr",
-      "@value" : "Bayonne"
-    },
-    "lat" : "43.490001678466796875",
-    "long" : "-1.4800000190734863281"
-  }, {
-    "@id" : "dbr:Behistun_Inscription",
-    "@type" : "dbo:Place",
-    "label" : {
-      "@language" : "fr",
-      "@value" : "Inscription de Behistun"
-    },
-    "lat" : "34.39055633544921875",
-    "long" : "47.435832977294921875"
-  }, {
-    "@id" : "dbr:Belfast",
-    "@type" : "dbo:Place",
-    "label" : {
-      "@language" : "fr",
-      "@value" : "Belfast"
-    },
-    "lat" : [ "54.596942901611328125", "54.5970001220703125" ],
-    "long" : [ "-5.9299998283386230469", "-5.9291667938232421875" ]
-  }, {
-    "@id" : "dbr:Ben_Nevis",
-    "@type" : "dbo:Place",
-    "label" : {
-      "@language" : "fr",
-      "@value" : "Ben Nevis"
-    },
-    "lat" : "56.796848297119140625",
-    "long" : "-5.0035080909729003906"
-  }, {
-    "@id" : "dbr:Berkeley,_California",
-    "@type" : "dbo:Place",
-    "label" : {
-      "@language" : "fr",
-      "@value" : "Berkeley (Californie)"
-    },
-    "lat" : "37.87166595458984375",
-    "long" : [ "-122.2727813720703125", "-122.27471923828125" ]
-  }, {
-    "@id" : "dbr:Bermuda_Triangle",
-    "@type" : "dbo:Place",
-    "label" : {
-      "@language" : "fr",
-      "@value" : "Triangle des Bermudes"
-    },
-    "lat" : "25.0",
-    "long" : "-71.0"
-  }, {
-    "@id" : "dbr:Big_Dig",
-    "@type" : "dbo:Place",
-    "label" : {
-      "@language" : "fr",
-      "@value" : "Big Dig"
-    },
-    "lat" : "42.361968994140625",
-    "long" : "-71.0556182861328125"
-  }, {
-    "@id" : "dbr:Black_Forest",
-    "@type" : "dbo:Place",
-    "label" : {
-      "@language" : "fr",
-      "@value" : "Forêt-Noire"
-    },
-    "lat" : "48.299999237060546875",
-    "long" : "8.1499996185302734375"
-  }, {
-    "@id" : "dbr:Black_Sea",
-    "@type" : "dbo:Place",
-    "label" : {
-      "@language" : "fr",
-      "@value" : "Mer Noire"
-    },
-    "lat" : "44.0",
-    "long" : "35.0"
-  }, {
-    "@id" : "dbr:Bletchley_Park",
-    "@type" : "dbo:Place",
-    "label" : {
-      "@language" : "fr",
-      "@value" : "Bletchley Park"
-    },
-    "lat" : "51.99649810791015625",
-    "long" : "-0.74279999732971191406"
-  }, {
-    "@id" : "dbr:Bodmin",
-    "@type" : "dbo:Place",
-    "label" : {
-      "@language" : "fr",
-      "@value" : "Bodmin"
-    },
-    "lat" : "50.465999603271484375",
-    "long" : "-4.7179999351501464844"
-  }, {
-    "@id" : "dbr:Bohemia",
-    "@type" : "dbo:Place",
-    "label" : {
-      "@language" : "fr",
-      "@value" : "Bohême"
-    },
-    "lat" : "50.0",
-    "long" : "15.0"
-  }, {
-    "@id" : "dbr:Boone,_North_Carolina",
-    "@type" : "dbo:Place",
-    "label" : {
-      "@language" : "fr",
-      "@value" : "Boone (Caroline du Nord)"
-    },
-    "lat" : "36.21138763427734375",
-    "long" : "-81.668609619140625"
-  }, {
-    "@id" : "dbr:Bordeaux",
-    "@type" : "dbo:Place",
-    "label" : {
-      "@language" : "fr",
-      "@value" : "Bordeaux"
-    },
-    "lat" : "44.840000152587890625",
-    "long" : "-0.57999998331069946289"
-  }, {
-    "@id" : "dbr:Borneo",
-    "@type" : "dbo:Place",
-    "label" : {
-      "@language" : "fr",
-      "@value" : "Bornéo"
-    },
-    "lat" : "1.0",
-    "long" : "114.0"
-  }, {
-    "@id" : "dbr:British_Isles",
-    "@type" : "dbo:Place",
-    "label" : {
-      "@language" : "fr",
-      "@value" : "Îles Britanniques"
-    },
-    "lat" : "54.0",
-    "long" : "-4.0"
-  }, {
-    "@id" : "dbr:British_Museum",
-    "@type" : "dbo:Place",
-    "label" : {
-      "@language" : "fr",
-      "@value" : "British Museum"
-    },
-    "lat" : "51.519458770751953125",
-    "long" : "-0.12693099677562713623"
-  }, {
-    "@id" : "dbr:Buffalo,_New_York",
-    "@type" : "dbo:Place",
-    "label" : {
-      "@language" : "fr",
-      "@value" : "Buffalo (New York)"
-    },
-    "lat" : "42.90472412109375",
-    "long" : "-78.8494415283203125"
-  }, {
-    "@id" : "dbr:CN_Tower",
-    "@type" : "dbo:Place",
-    "label" : {
-      "@language" : "fr",
-      "@value" : "Tour CN"
-    },
-    "lat" : [ "43.641666412353515625", "43.64260101318359375" ],
-    "long" : [ "-79.3871002197265625", "-79.37305450439453125" ]
-  }, {
-    "@id" : "dbr:Cadillac,_Michigan",
-    "@type" : "dbo:Place",
-    "label" : {
-      "@language" : "fr",
-      "@value" : "Cadillac (Michigan)"
-    },
-    "lat" : "44.25",
-    "long" : "-85.40000152587890625"
-  }, {
-    "@id" : "dbr:Kansas_City,_Missouri",
-    "@type" : "dbo:Place",
-    "label" : {
-      "@language" : "fr",
-      "@value" : "Kansas City (Missouri)"
-    },
-    "lat" : "39.09972381591796875",
-    "long" : "-94.57833099365234375"
+    "lat" : "48.8166656494140625",
+    "long" : "14.316666603088378906"
   } ],
   "@context" : {
+    "subject" : {
+      "@id" : "http://purl.org/dc/terms/subject",
+      "@type" : "@id"
+    },
     "long" : {
       "@id" : "http://www.w3.org/2003/01/geo/wgs84_pos#long",
       "@type" : "http://www.w3.org/2001/XMLSchema#float"
@@ -741,9 +526,10 @@
     "label" : {
       "@id" : "http://www.w3.org/2000/01/rdf-schema#label"
     },
-    "dbo" : "http://dbpedia.org/ontology/",
     "geo" : "http://www.w3.org/2003/01/geo/wgs84_pos#",
-    "ns6" : "http://dbpedia.org/resource/Aoraki_/",
+    "dbo" : "http://dbpedia.org/ontology/",
+    "dct" : "http://purl.org/dc/terms/",
+    "dbc" : "http://dbpedia.org/resource/Category:",
     "rdf" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "dbr" : "http://dbpedia.org/resource/",
     "xsd" : "http://www.w3.org/2001/XMLSchema#",
