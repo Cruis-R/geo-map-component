@@ -5,15 +5,15 @@ Find the live demo [here](https://cruis-r.github.io/geo-map-component/)
 Use search bar to find trace of one specific hour:  
 For example:  
 You want to get the trace from 2017/06/08 18:00 to 2017/06/08 18:59  
-type 
-'''
+type  
+```javascript
 2017-06-08T18
-'''
-You want to get the trace of one specific day like 2017/06/08:
-type 
-'''
+```
+You want to get the trace of one specific day like 2017/06/08:  
+type  
+```javascript
 2017-06-08
-'''
+```
 You can also put more time slot into the search bar to get more info  
 # Get started
 # If no server is implemented(default)
